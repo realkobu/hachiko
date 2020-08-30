@@ -1,0 +1,27 @@
+{
+  "name": "hachiko",
+  "version": "0.0.1",
+  "description": "Hachiko bot development",
+  "main": "bot.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/realkobu/hachiko.git"
+  },
+  "keywords": [
+    "hachiko",
+    "bot",
+    "discord"
+  ],
+  "author": "Kobu",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/realkobu/hachiko/issues"
+  },
+  "homepage": "https://github.com/realkobu/hachiko#readme",
+  "dependencies": {
+    "discord.js": "^12.3.1"
+  }
+}
