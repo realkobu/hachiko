@@ -5,6 +5,6 @@ module.exports = {
     description: "Hug someone!",
     execute(message, args) {
         const embed = new MessageEmbed()
-        .setTitle("AA")
+        .setTitle("AAAA")
     }
 }
