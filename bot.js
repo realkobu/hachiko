@@ -20,19 +20,17 @@ for (const file of commandFiles) {
 
 
 // On ready
-client.on('ready', () => {
+client.on('ready', async () => {
     console.log("Bot ready!");
-    client.user.setStatus('available')
-    client.user.setPresence({
-    game: {
-        name: 'Hideout',
-        type: "WATCHING",
-        url: ""
-    }
-})
+    
+    client.guilds.cache.forEach((guild) => {
+        const guildname = guild.name;
+        client.user.setActivity(`${guildname}`, {type: 'WATCHING', url: 'https://discord.gg/5EDEke'});
+    });
+    
 });
 
-client.on('message', message => {
+client.on('message', async message => {
     if(!message.content.startsWith(prefix) || message.author.bot) return;
 
     const args = message.content.slice(prefix.length).trim().split(/ +/);
@@ -42,9 +40,24 @@ client.on('message', message => {
 
     try {
         client.commands.get(command).execute(message, args);
-    } catch (erro) {
+    } catch (error) {
         console.error(error);
         message.reply("There was an error executing the command");
+    }
+
+    //Streaming command
+    if(message.content.includes("streaming")){
+        if(args[0] === 'Online'){
+        client.user.setActivity(args[1], {type: 'STREAMING', url: `${args[2]}`});
+        } else if (args[0] === 'Offline') {
+            client.guilds.cache.forEach((guild) => {
+                const guildname = guild.name;
+                client.user.setActivity(`${guildname}`, {type: 'WATCHING', url: 'https://discord.gg/5EDEke'});
+            });
+        } else {
+            message.channel.send("Error")
+        }
+        
     }
 
 });
