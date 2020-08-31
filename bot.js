@@ -18,9 +18,18 @@ for (const file of commandFiles) {
     client.commands.set(command.name, command);
 }
 
+
 // On ready
 client.on('ready', () => {
     console.log("Bot ready!");
+    client.user.setStatus('available')
+    client.user.setPresence({
+    game: {
+        name: 'Hideout',
+        type: "WATCHING",
+        url: ""
+    }
+})
 });
 
 client.on('message', message => {
